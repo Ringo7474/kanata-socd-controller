@@ -9,12 +9,9 @@
 ## 下载与快速使用
 
 1. 打开本仓库右侧的 **Releases**，下载 `DirectionKey-SOCD-v1.0.0.zip` 并解压。
-2. 从 [Kanata Releases](https://github.com/jtroo/kanata/releases) 下载 Windows `wintercept` 版本。
-3. 按 Kanata 官方文档安装 Interception 驱动。
-4. 将 `kanata_windows_gui_wintercept_x64.exe` 和 `interception.dll` 放进解压后的目录。
-5. 双击 `SOCD_Controller.exe`。
-6. 在界面里选择“触发一次”或“固定时长”，勾选 `W/S`、`A/D`，点击“保存并启动”。
-7. 右上角显示“运行中”后，SOCD 后按优先逻辑就已经生效。
+2. 双击 `SOCD_Controller.exe`。
+3. 在界面里选择“触发一次”或“固定时长”，勾选 `W/S`、`A/D`，点击“保存并启动”。
+4. 右上角显示“运行中”后，SOCD 后按优先逻辑就已经生效。
 
 如果只想看源码或自己构建，可以直接下载本仓库代码。
 
