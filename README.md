@@ -4,7 +4,7 @@
 
 > 本项目提供图形控制器和 Kanata 配置，不包含 Kanata、Interception 等第三方二进制文件。
 
-![方向键急停界面](docs/ui.png)
+![方向键急停界面](docs/ui.jpg)
 
 ## 界面说明
 

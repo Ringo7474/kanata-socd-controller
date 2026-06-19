@@ -1,0 +1,13 @@
+# Download Kanata and Interception binaries from their official sources.
+*.exe
+*.dll
+*.zip
+
+# Local runtime files
+*.log
+*.tmp
+*.bak
+socd_settings.json
+.gui-venv/
+build/
+SOCD_Controller.exe

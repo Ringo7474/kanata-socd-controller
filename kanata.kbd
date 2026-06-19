@@ -1,0 +1,119 @@
+(defcfg
+  process-unmapped-keys no
+)
+
+(defsrc
+  w s
+  a d
+)
+
+(defvirtualkeys
+  out-w w
+  out-s s
+  state-w nop0
+  state-s nop1
+  out-a a
+  out-d d
+  state-a nop2
+  state-d nop3
+  release-w (switch
+    ((input virtual state-w)) (switch
+      ((input real s)) (multi
+        (on-press release-vkey state-w)
+        (on-press press-vkey state-s)
+        (on-press release-vkey out-w)
+        (on-press press-vkey out-s)
+      ) break
+      () (multi
+        (on-press release-vkey state-w)
+        (on-press release-vkey out-w)
+        (on-press tap-vkey out-s)
+      ) break
+    ) break
+    () XX break
+  )
+  release-s (switch
+    ((input virtual state-s)) (switch
+      ((input real w)) (multi
+        (on-press release-vkey state-s)
+        (on-press press-vkey state-w)
+        (on-press release-vkey out-s)
+        (on-press press-vkey out-w)
+      ) break
+      () (multi
+        (on-press release-vkey state-s)
+        (on-press release-vkey out-s)
+        (on-press tap-vkey out-w)
+      ) break
+    ) break
+    () XX break
+  )
+  release-a (switch
+    ((input virtual state-a)) (switch
+      ((input real d)) (multi
+        (on-press release-vkey state-a)
+        (on-press press-vkey state-d)
+        (on-press release-vkey out-a)
+        (on-press press-vkey out-d)
+      ) break
+      () (multi
+        (on-press release-vkey state-a)
+        (on-press release-vkey out-a)
+        (on-press tap-vkey out-d)
+      ) break
+    ) break
+    () XX break
+  )
+  release-d (switch
+    ((input virtual state-d)) (switch
+      ((input real a)) (multi
+        (on-press release-vkey state-d)
+        (on-press press-vkey state-a)
+        (on-press release-vkey out-d)
+        (on-press press-vkey out-a)
+      ) break
+      () (multi
+        (on-press release-vkey state-d)
+        (on-press release-vkey out-d)
+        (on-press tap-vkey out-a)
+      ) break
+    ) break
+    () XX break
+  )
+)
+
+(defalias
+  w-on-release (multi
+    (on-press release-vkey state-s)
+    (on-press press-vkey state-w)
+    (on-press release-vkey out-s)
+    (on-press press-vkey out-w)
+    (on-release tap-vkey release-w)
+  )
+  s-on-release (multi
+    (on-press release-vkey state-w)
+    (on-press press-vkey state-s)
+    (on-press release-vkey out-w)
+    (on-press press-vkey out-s)
+    (on-release tap-vkey release-s)
+  )
+  a-on-release (multi
+    (on-press release-vkey state-d)
+    (on-press press-vkey state-a)
+    (on-press release-vkey out-d)
+    (on-press press-vkey out-a)
+    (on-release tap-vkey release-a)
+  )
+  d-on-release (multi
+    (on-press release-vkey state-a)
+    (on-press press-vkey state-d)
+    (on-press release-vkey out-a)
+    (on-press press-vkey out-d)
+    (on-release tap-vkey release-d)
+  )
+)
+
+(deflayer default
+  @w-on-release @s-on-release
+  @a-on-release @d-on-release
+)
